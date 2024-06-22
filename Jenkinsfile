@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'manishpawar') {
-                        docker.image("$DOCKER_IMAGE:${env.BUILD_ID}").push('latest')
+                        docker.image(registry + ":${env.BUILD_ID}").push('latest')
                     }
                 }
             }
