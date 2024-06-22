@@ -16,7 +16,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'REGISTRY_CREDENTIALS') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'manishpawar') {
                         docker.image("$DOCKER_IMAGE:${env.BUILD_ID}").push('latest')
                     }
                 }
