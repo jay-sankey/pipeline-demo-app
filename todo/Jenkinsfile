@@ -10,11 +10,6 @@ pipeline {
         REGISTRY_CREDENTIALS = credentials('dckr_pat_reOJBlnx35SI4QFuvkKkkns3cdUs')
     }
     stages {
-        stage('Checkout code') {
-            steps {
-                checkout scm
-            }
-        }
         stage('Install Dependencies') {
             steps {
                 bat 'pip install -r requirements.txt'
