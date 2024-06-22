@@ -1,0 +1,51 @@
+pipeline {
+    agent {
+        docker {
+            image 'python:3.9.12'
+            args '-u root' // Ensures you have root access inside the container
+        }
+    }
+    environment {
+        DJANGO_SETTINGS_MODULE = 'todo.settings'
+        DOCKER_IMAGE = 'todo'
+        REGISTRY_CREDENTIALS = credentials('dckr_pat_reOJBlnx35SI4QFuvkKkkns3cdUs')
+    }
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'git@github.com:manish-pawar/todo-app-demo.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build("$DOCKER_IMAGE:${env.BUILD_ID}")
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dckr_pat_reOJBlnx35SI4QFuvkKkkns3cdUs') {
+                        docker.image("$DOCKER_IMAGE:${env.BUILD_ID}").push('latest')
+                    }
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Deployment steps, e.g., Docker Compose, Kubernetes, etc.
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
