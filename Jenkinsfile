@@ -4,7 +4,7 @@ pipeline {
         DJANGO_SETTINGS_MODULE = 'todo.settings'
         DOCKER_IMAGE = 'todo'
         REGISTRY_CREDENTIALS = credentials('manishpawar')
-        registry = "manish222508/todo"
+        registry = "manish222508/to-do-test-app"
     }
     stages {
         stage('Build Docker Image') {
