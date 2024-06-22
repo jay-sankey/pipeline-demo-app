@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker {
+        dockerContainer {
             image 'python:3.9.12'
             args '-u root' // Ensures you have root access inside the container
         }
