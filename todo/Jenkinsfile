@@ -10,11 +10,6 @@ pipeline {
         REGISTRY_CREDENTIALS = credentials('dckr_pat_reOJBlnx35SI4QFuvkKkkns3cdUs')
     }
     stages {
-        stage('Clone Repository') {
-            steps {
-                git 'git@github.com:manish-pawar/todo-app-demo.git'
-            }
-        }
         stage('Install Dependencies') {
             steps {
                 sh 'pip install -r requirements.txt'
