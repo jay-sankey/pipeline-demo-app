@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerHubCreds') {
-                        docker.image(registry + ":${env.BUILD_ID}").push(":${env.BUILD_ID}")
+                        docker.image(registry + ":${env.BUILD_ID}").push(env.BUILD_ID)
                     }
                 }
             }
