@@ -9,7 +9,6 @@ def home(request):
     return render(request, 'task/home.html', context)
 
 
-
 def create_todo(request):
     if request.method == 'POST':
         forms = TodoForm(request.POST)
