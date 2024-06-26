@@ -4,7 +4,7 @@ pipeline {
         DJANGO_SETTINGS_MODULE = 'todo.settings'
         DOCKER_IMAGE = 'todo'
         REGISTRY_CREDENTIALS = credentials('dockerHubCreds')
-        registry = "jaysankey/ppl-demo"
+        registry = "jaymsankey/todo-app-demo"
     }
     stages {
         stage('Build Docker Image') {
