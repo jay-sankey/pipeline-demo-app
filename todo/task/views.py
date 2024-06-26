@@ -8,6 +8,7 @@ def home(request):
     context = {'todos' : Todo.objects.all().order_by('-created_date')}
     return render(request, 'task/home.html', context)
 
+
 def create_todo(request):
     if request.method == 'POST':
         forms = TodoForm(request.POST)
