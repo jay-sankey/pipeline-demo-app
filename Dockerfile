@@ -20,4 +20,4 @@ RUN ls
 RUN pip install -r requirements.txt
 WORKDIR .
 #CMD ["python todo/manage.py makemigrations","python todo/manage.py migrate", "python todo/manage.py runserver 0.0.0.0:8000"]
-CMD ["cd todo","ls"]
+CMD ["ls"]
