@@ -19,5 +19,5 @@ RUN ls
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 WORKDIR .
-CMD ["python","/todo/manage.py"]
+CMD ["ls"]
 #,"makemigrations","&&", "python", "manage.py","migrate" ,"&&", "python", "manage.py","runserver","0.0.0.0:8000"]
